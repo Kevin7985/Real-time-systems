@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang = "ru">
+    <head>
+        <meta charset = "UTF-8"></meta>
+    </head>
+    <script type = "text/javascript">
+        function showResult() {
+            const searchParams = new URLSearchParams(location.search);
+            if (searchParams.has('mo') && searchParams.has('cr') && searchParams.has('v')) {
+                document.getElementById('result').innerHTML = `
+                <table border = "1">
+                    <thead>
+                        <tr><td>Металл</td><td>Значение</td></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Mo</td><td>${searchParams.get('mo')}</td></tr>
+                        <tr><td>Cr</td><td>${searchParams.get('cr')}</td></tr>
+                        <tr><td>V</td><td>${searchParams.get('v')}</td></tr>
+                    </tbody>
+                </table>
+            `;
+            }
+        }
+    </script>
+    <body onLoad = "showResult();">
+        <form method = "POST" enctype = "multipart/form-data">
+            <input type = "file" name = "file">
+            <input type = "submit" value = "Отправить">
+        </form>
+        <br>
+        <div id = "result"></div>
+    </body>
+</html>
