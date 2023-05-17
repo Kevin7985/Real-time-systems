@@ -23,6 +23,10 @@ def predictors(filename):
 
     return output
 
+@app.route('/favicon.ico', methods =['GET'])
+def favicon():
+    return open('favicon.ico', 'rb').read()
+
 @app.route('/', methods = ['GET', 'POST'])
 def page():
     if request.method == 'POST':
